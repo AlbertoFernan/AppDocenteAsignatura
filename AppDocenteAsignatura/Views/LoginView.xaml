@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.LoginView"
-             Title="LoginView">
-    <VerticalStackLayout >
+             Title="LoginView"  Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.80*"></RowDefinition>
+            <RowDefinition Height="0.20*"></RowDefinition>
+        </Grid.RowDefinitions>
+    <FlexLayout  Grid.Row="0"     Direction="Column" Margin="20">
+        <Label HorizontalOptions="Center">Inicio de sesion</Label>
         <Label>Correo:</Label>
-        <Entry></Entry>
+        <Entry   ></Entry>
         <Label>Contraseña:</Label>
         <Entry></Entry>
-    </VerticalStackLayout>
+
+        </FlexLayout  >
+        <Button Grid.Row="1" TextColor="White" BorderColor="White" BackgroundColor="Transparent"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>
+    </Grid>
 </ContentPage>

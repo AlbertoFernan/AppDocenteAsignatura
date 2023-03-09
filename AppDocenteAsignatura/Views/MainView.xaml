@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDocenteAsignatura.Views.MainView" 
+            xmlns:views="clr-namespace:AppDocenteAsignatura.Views"
+             Title="MainView" >
+
+    <FlyoutItem Title="Grupos" >
+        
+            <ShellContent ContentTemplate="{DataTemplate views:GruposView}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Perfil"
+            >
+            <ShellContent ContentTemplate="{DataTemplate views:PerfilView}" />
+        </FlyoutItem>
+ 
+
+</Shell>
