@@ -8,5 +8,39 @@
             Text="Grupos"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.10*"></ColumnDefinition>
+                <ColumnDefinition Width="0.80*"></ColumnDefinition>
+                <ColumnDefinition Width="0.10*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <CollectionView Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+                        <Frame  BackgroundColor="Orange" Padding="0" Margin="5" CornerRadius="15" BorderColor="Transparent">
+                            <StackLayout Padding="5" Spacing="10"  HorizontalOptions="Center"  Orientation="Horizontal">
+                                <VerticalStackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label  >Grado:</Label>
+                                        <Label   VerticalOptions="Center" Text="{Binding Grado}"></Label>
+                                    </StackLayout>
+                                    <StackLayout  Orientation="Horizontal">
+                                        <Label  >Seccion:</Label>
+                                        <Label VerticalOptions="Center"  Text="{Binding Seccion}"></Label>
+                                    </StackLayout>
+
+                                </VerticalStackLayout>
+
+                                <Image Source="grupoimg.png" HeightRequest="40"></Image>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+       
     </VerticalStackLayout>
 </ContentPage>
