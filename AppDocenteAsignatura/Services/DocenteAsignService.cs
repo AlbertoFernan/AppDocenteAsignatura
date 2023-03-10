@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppDocenteAsignatura.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,35 @@ using System.Threading.Tasks;
 
 namespace AppDocenteAsignatura.Services
 {
-    internal class DocenteAsignService
+    public class DocenteAsignService
     {
+        HttpClient cliente = new HttpClient
+        {
+            BaseAddress = new Uri("https://docenteprimaria.sistemas19.com/")
+        };
+
+        public async Task<List<Grupos>> GetGrupos(int id)
+        {
+            List<Grupos> Grupos = null;
+
+            var response = await cliente.GetAsync("api/Docente/grupos/"+id);
+
+            if (response.IsSuccessStatusCode) //status= 200 ok
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                Grupos = JsonConvert.DeserializeObject<List<Grupos>>(json);
+            }
+
+            if (Grupos != null)
+            {
+                return Grupos;
+            }
+            else
+            {
+                return new List<Grupos>();
+            }
+        }
+
+
     }
 }
