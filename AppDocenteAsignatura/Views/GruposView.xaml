@@ -2,26 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.GruposView"
-             Title="GruposView">
-    <VerticalStackLayout>
-        <Label 
+             Title="GruposView" Shell.NavBarIsVisible="False" BackgroundColor="#040C0E" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"></RowDefinition>
+            <RowDefinition Height="0.95*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label  VerticalTextAlignment="Center"  Grid.Row="0" 
             Text="Grupos"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Grid>
+
+        <ScrollView Grid.Row="1"   VerticalOptions="FillAndExpand">
+            <VerticalStackLayout Margin="10" Grid.Row="0"   >
+      
+      
+        <Grid  >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.10*"></ColumnDefinition>
                 <ColumnDefinition Width="0.80*"></ColumnDefinition>
                 <ColumnDefinition Width="0.10*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <CollectionView Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
+
+
+            <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
 
-                        <Frame  BackgroundColor="Orange" Padding="0" Margin="5" CornerRadius="15" BorderColor="Transparent">
-                            <StackLayout Padding="5" Spacing="10"  HorizontalOptions="Center"  Orientation="Horizontal">
-                                <VerticalStackLayout>
+                        <Frame  BackgroundColor="#132226" Padding="0" Margin="5" CornerRadius="15" BorderColor="White">
+                            <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
+                                <VerticalStackLayout BackgroundColor="Red" >
                                     <StackLayout Orientation="Horizontal">
                                         <Label  >Grado:</Label>
                                         <Label   VerticalOptions="Center" Text="{Binding Grado}"></Label>
@@ -40,7 +51,10 @@
                 </CollectionView.ItemTemplate>
 
             </CollectionView>
+        
         </Grid>
-       
+        
     </VerticalStackLayout>
+    </ScrollView>
+    </Grid>
 </ContentPage>

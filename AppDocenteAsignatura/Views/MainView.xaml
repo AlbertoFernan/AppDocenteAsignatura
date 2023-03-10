@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.MainView" 
             xmlns:views="clr-namespace:AppDocenteAsignatura.Views"
-             Title="MainView" >
+             Title="MainView" Shell.NavBarIsVisible="False" >
     
 
         <FlyoutItem Title="Grupos" >
