@@ -37,6 +37,28 @@ namespace AppDocenteAsignatura.Services
             }
         }
 
+        public async Task<List<Alumnos>> GetAlumnos(int id)
+        {
+            List<Alumnos> Alumnos = null;
+
+            var response = await cliente.GetAsync("api/Docente/alumnos/" + id);
+
+            if (response.IsSuccessStatusCode) //status= 200 ok
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                Alumnos = JsonConvert.DeserializeObject<List<Alumnos>>(json);
+            }
+
+            if (Alumnos != null)
+            {
+                return Alumnos;
+            }
+            else
+            {
+                return new List<Alumnos>();
+            }
+        }
+
 
     }
 }

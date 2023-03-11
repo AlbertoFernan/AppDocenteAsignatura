@@ -16,9 +16,14 @@ namespace AppDocenteAsignatura.ViewModels
     {
 
         MainView mainView;
+        AlumnosView alumnosView;
 
         public List<Grupos> GruposDelDocente { get; set; }
+
+        public List<Alumnos> AlumnosDelGrupo { get; set; }
         public ICommand LoginCommand { get; set; }
+
+        public ICommand VerAlumnosCommand { get; set; }
 
         public DocenteAsignService service;
 
@@ -27,8 +32,18 @@ namespace AppDocenteAsignatura.ViewModels
         public DocenteAsignaturaViewModel()
         {
             LoginCommand = new Command(IniciarSesionAsync);
+            VerAlumnosCommand = new Command<int>(VerAlumnos);
             service = new DocenteAsignService();
 
+        }
+
+        private async void VerAlumnos(int id)
+        {
+
+            AlumnosDelGrupo = await service.GetAlumnos(id); ;
+
+            alumnosView = new AlumnosView() { BindingContext = this };
+            Application.Current.MainPage = alumnosView;
         }
 
         private async void IniciarSesionAsync()

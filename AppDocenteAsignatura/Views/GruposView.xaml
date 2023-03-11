@@ -2,17 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.GruposView"
-             Title="GruposView" Shell.NavBarIsVisible="False" BackgroundColor="#040C0E" >
+             Title="Grupos" Shell.BackgroundColor="Black"   BackgroundColor="#0b1d21" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.05*"></RowDefinition>
-            <RowDefinition Height="0.95*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="0.90*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label  VerticalTextAlignment="Center"  Grid.Row="0" 
-            Text="Grupos"
+        <Frame BorderColor="Transparent" CornerRadius="0" Padding="5" BackgroundColor="#cf6123"  Grid.Row="0">
+     
+        <Label FontSize="Header" TextColor="White"  VerticalTextAlignment="Center"   
+            Text="Seleccione un grupo para ver sus alumnos"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
+        </Frame>
         <ScrollView Grid.Row="1"   VerticalOptions="FillAndExpand">
             <VerticalStackLayout Margin="10" Grid.Row="0"   >
       
@@ -26,20 +29,24 @@
 
 
             <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
+                        
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
 
-                        <Frame  BackgroundColor="#132226" Padding="0" Margin="5" CornerRadius="15" BorderColor="White">
+                                <Frame  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer  ></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
                             <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
-                                <VerticalStackLayout BackgroundColor="Red" >
+                                <VerticalStackLayout  >
                                     <StackLayout Orientation="Horizontal">
-                                        <Label  >Grado:</Label>
-                                        <Label   VerticalOptions="Center" Text="{Binding Grado}"></Label>
+                                        <Label TextColor="White"  >Grado:</Label>
+                                                <Label TextColor="White"     VerticalOptions="Center" Text="{Binding Grado}"></Label>
                                     </StackLayout>
                                     <StackLayout  Orientation="Horizontal">
-                                        <Label  >Seccion:</Label>
-                                        <Label VerticalOptions="Center"  Text="{Binding Seccion}"></Label>
+                                                <Label TextColor="White"    >Seccion:</Label>
+                                                <Label TextColor="White"   VerticalOptions="Center"  Text="{Binding Seccion}"></Label>
                                     </StackLayout>
 
                                 </VerticalStackLayout>
