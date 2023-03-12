@@ -1,6 +1,7 @@
 ﻿using AppDocenteAsignatura.Models;
 using AppDocenteAsignatura.Services;
 using AppDocenteAsignatura.Views;
+using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,17 @@ namespace AppDocenteAsignatura.ViewModels
         public List<Grupos> GruposDelDocente { get; set; }
 
         public List<Alumnos> AlumnosDelGrupo { get; set; }
-
-        public List<Calificacion> CalificacionesAlumno { get; set; }
+        public List<int> Unidades { get; set; }
+        public List<Evaluaciones> EvaluacionesAlumno { get; set; }
         public ICommand LoginCommand { get; set; }
 
         public ICommand VerAlumnosCommand { get; set; }
 
         public ICommand VerCalificacionesCommand { get; set; }
+
+        public ICommand RegresarCommand { get; set; }
+
+        public ICommand AgregarCalificacionCommand { get; set; }
 
         public DocenteAsignService service;
 
@@ -39,15 +44,39 @@ namespace AppDocenteAsignatura.ViewModels
 
         public DocenteAsignaturaViewModel()
         {
+            Unidades=new List<int>();
+            Unidades.Add(1);
+
+            Unidades.Add(2);
+
+            Unidades.Add(3);
             LoginCommand = new Command(IniciarSesionAsync);
             VerAlumnosCommand = new Command<int>(VerAlumnos);
 
             VerCalificacionesCommand = new Command<int>(VerCalificacioness);
+
+            AgregarCalificacionCommand = new Command(AggCalifAsync);
+
+            RegresarCommand = new Command(Regresar);
             service = new DocenteAsignService();
 
             loginUser = new LoginUser();
             docente = new Docente();
 
+        }
+
+        private void AggCalifAsync(object obj)
+        {
+            Calificacion nuevacalif = new Calificacion();
+          Application.Current.MainPage.ShowPopup(new PopupEvaluacion());
+            //string calif = await Application.Current.MainPage.DisplayPromptAsync("Calificación", "Ingrese una calificacion", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
+
+
+        }
+
+        private async void Regresar()
+        {
+            await Application.Current.MainPage.Navigation.PopAsync(); 
         }
 
         private async void VerCalificacioness(int id)
@@ -58,10 +87,12 @@ namespace AppDocenteAsignatura.ViewModels
             calif.IdPeriodo =(int)docente.Periodo;
             calif.IdAsignatura = docente.IdAsigantura;
 
-            CalificacionesAlumno = await service.VerCalifs(calif);
+            EvaluacionesAlumno = await service.VerCalifs(calif);
 
             calificacionesView = new CalificacionesView() { BindingContext = this };
-            Application.Current.MainPage = calificacionesView;
+         
+
+            await Application.Current.MainPage.Navigation.PushAsync(calificacionesView);
         }
 
         private async void VerAlumnos(int id)
@@ -70,7 +101,7 @@ namespace AppDocenteAsignatura.ViewModels
             AlumnosDelGrupo = await service.GetAlumnos(id); 
 
             alumnosView = new AlumnosView() { BindingContext = this };
-            Application.Current.MainPage = alumnosView;
+            Application.Current.MainPage = new NavigationPage(alumnosView);
         }
 
         private async void IniciarSesionAsync()

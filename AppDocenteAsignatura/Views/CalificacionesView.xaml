@@ -35,7 +35,7 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding CalificacionesAlumno}">
+                    <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding EvaluacionesAlumno}">
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -78,11 +78,14 @@
                 <Frame BorderColor="Transparent"  BackgroundColor="#cf6123" Padding="0" >
                     <Label FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" Text="Regresar"></Label>
             </Frame>
-        </Border>
+            </Border> 
 
             <Border  Grid.Column="1" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="Start" WidthRequest="80" HeightRequest="80" >
           
             <Frame  Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  BackgroundColor="Yellow"  >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AgregarCalificacionCommand}" ></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
                 <Label TextColor="Black" HorizontalOptions="Center" FontSize="Large"  VerticalOptions="Center" Text="+"></Label>
             </Frame>
         </Border>

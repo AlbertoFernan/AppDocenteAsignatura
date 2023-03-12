@@ -84,17 +84,17 @@ namespace AppDocenteAsignatura.Services
             }
         }
 
-        public async Task<List<Calificacion>> VerCalifs(VerCalificacion calif)
+        public async Task<List<Evaluaciones>> VerCalifs(VerCalificacion calif)
         {
             //Validar
-            List<Calificacion> calificaciones = null;
+            List<Evaluaciones> calificaciones = null;
 
             var json = JsonConvert.SerializeObject(calif);
             var response = await cliente.PostAsync("api/Docente/calificaciones", new StringContent(json, Encoding.UTF8,
                 "application/json"));
 
             var json2 = await response.Content.ReadAsStringAsync();
-             calificaciones = JsonConvert.DeserializeObject<List<Calificacion>>(json2);
+             calificaciones = JsonConvert.DeserializeObject<List<Evaluaciones>>(json2);
         
 
             //if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
