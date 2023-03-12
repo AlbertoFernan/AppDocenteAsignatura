@@ -2,13 +2,17 @@
 <mtc:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.PopupEvaluacion"
-             xmlns:mtc="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             xmlns:mtc="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui" Color="Transparent"
     >
-    <VerticalStackLayout BackgroundColor="Black">
+    <Frame BackgroundColor="Black" Padding="0" CornerRadius="20">
+        
+   
+    <VerticalStackLayout BackgroundColor="Transparent"  Padding="20" >
         <Label Text="Seleccione una unidad"/>
-        <Picker ItemsSource="{Binding Unidades}" SelectedItem="{Binding nuevacalif.Unidad}" ></Picker>
+        <Picker  ItemsSource="{Binding Unidades}" SelectedItem="{Binding nuevacalif.Unidad}" ></Picker>
         <Label Text="Ingrese una calificacion"/>
-        <Entry Text="{Binding nuevacalif.Calificacion1 }" ></Entry>
-        <Button Text="Agregar"></Button>
+        <Entry  Text="{Binding nuevacalif.Calificacion1 }" ></Entry>
+            <Button Command="{Binding EnviarCalificacionCommand}" Text="Agregar"></Button>
     </VerticalStackLayout>
+    </Frame>
 </mtc:Popup>

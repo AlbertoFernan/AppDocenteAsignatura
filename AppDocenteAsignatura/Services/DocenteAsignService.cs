@@ -107,5 +107,27 @@ namespace AppDocenteAsignatura.Services
         }
 
 
+        public async Task<bool> SubirCalif(Calificacion calif)
+        {
+            //Validar
+          
+
+            var json = JsonConvert.SerializeObject(calif);
+            var response = await cliente.PostAsync("api/Docente/calificar", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+
+        
+
+
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+              
+                return false;
+            }
+            return true;
+        }
+
+
     }
 }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AppDocenteAsignatura.ViewModels
 {
@@ -19,8 +20,11 @@ namespace AppDocenteAsignatura.ViewModels
         MainView mainView;
         AlumnosView alumnosView;
         CalificacionesView  calificacionesView;
+        PopupEvaluacion popup;
         public List<Grupos> GruposDelDocente { get; set; }
 
+        public Calificacion nuevacalif  { get; set; }
+        public VerCalificacion calif { get; set; }
         public List<Alumnos> AlumnosDelGrupo { get; set; }
         public List<int> Unidades { get; set; }
         public List<Evaluaciones> EvaluacionesAlumno { get; set; }
@@ -33,6 +37,8 @@ namespace AppDocenteAsignatura.ViewModels
         public ICommand RegresarCommand { get; set; }
 
         public ICommand AgregarCalificacionCommand { get; set; }
+
+        public ICommand EnviarCalificacionCommand { get; set; }
 
         public DocenteAsignService service;
 
@@ -56,6 +62,7 @@ namespace AppDocenteAsignatura.ViewModels
             VerCalificacionesCommand = new Command<int>(VerCalificacioness);
 
             AgregarCalificacionCommand = new Command(AggCalifAsync);
+            EnviarCalificacionCommand = new Command(EnviarAsync);
 
             RegresarCommand = new Command(Regresar);
             service = new DocenteAsignService();
@@ -65,10 +72,26 @@ namespace AppDocenteAsignatura.ViewModels
 
         }
 
+        private async void EnviarAsync()
+        {
+            await service.SubirCalif(nuevacalif);
+            EvaluacionesAlumno = await service.VerCalifs(calif);
+            popup.Close();
+            Actualizar(nameof(EvaluacionesAlumno));
+
+        }
+
         private void AggCalifAsync(object obj)
         {
-            Calificacion nuevacalif = new Calificacion();
-          Application.Current.MainPage.ShowPopup(new PopupEvaluacion());
+            popup = new PopupEvaluacion();
+            nuevacalif = new Calificacion();
+            nuevacalif.IdDocente = docente.Id;
+            nuevacalif.IdPeriodo = (int)docente.Periodo;
+            nuevacalif.IdAsignatura = docente.IdAsigantura;
+            nuevacalif.IdAlumno = calif.IdAlumno;
+            nuevacalif.Unidad = 1;
+            nuevacalif.Calificacion1 = 0;
+          Application.Current.MainPage.ShowPopup(popup);
             //string calif = await Application.Current.MainPage.DisplayPromptAsync("Calificación", "Ingrese una calificacion", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
 
 
@@ -81,7 +104,7 @@ namespace AppDocenteAsignatura.ViewModels
 
         private async void VerCalificacioness(int id)
         {
-            VerCalificacion calif = new VerCalificacion();
+            calif = new VerCalificacion();
             calif.IdAlumno = id;
             calif.IdDocente = docente.Id;
             calif.IdPeriodo =(int)docente.Periodo;
@@ -122,6 +145,11 @@ namespace AppDocenteAsignatura.ViewModels
        
 
 
+        }
+
+        public void Actualizar(string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
