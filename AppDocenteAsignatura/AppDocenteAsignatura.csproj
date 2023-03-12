@@ -49,7 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\calif.png" />
 	  <None Remove="Resources\Images\grupoimg.png" />
+	  <None Remove="Resources\Images\student.png" />
 	</ItemGroup>
 
 	<ItemGroup>

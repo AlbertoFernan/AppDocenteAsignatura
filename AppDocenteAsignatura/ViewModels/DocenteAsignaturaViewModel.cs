@@ -113,9 +113,9 @@ namespace AppDocenteAsignatura.ViewModels
             EvaluacionesAlumno = await service.VerCalifs(calif);
 
             calificacionesView = new CalificacionesView() { BindingContext = this };
-         
 
-            await Application.Current.MainPage.Navigation.PushAsync(calificacionesView);
+            await Shell.Current.GoToAsync("calificacionesView");
+            //await Application.Current.MainPage.Navigation.PushAsync(calificacionesView);
         }
 
         private async void VerAlumnos(int id)
@@ -124,25 +124,51 @@ namespace AppDocenteAsignatura.ViewModels
             AlumnosDelGrupo = await service.GetAlumnos(id); 
 
             alumnosView = new AlumnosView() { BindingContext = this };
-            Application.Current.MainPage = new NavigationPage(alumnosView);
+            await Shell.Current.GoToAsync("AlumnosView");
+           // Application.Current.MainPage = new NavigationPage(alumnosView);
         }
 
         private async void IniciarSesionAsync()
         {
+            NetworkAccess accessType = Connectivity.Current.NetworkAccess;
 
-
-            docente = await service.Login(loginUser);
-            if (docente != null)
+            if (accessType == NetworkAccess.Internet)
             {
-                GruposDelDocente = await service.GetGrupos(docente.Id);
-                mainView = new MainView() { BindingContext = this };
+                if(string.IsNullOrWhiteSpace(loginUser.Usuario1))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Ingrese un usuario", "Ok");
 
-                Application.Current.MainPage = mainView;
+                }
+                if (string.IsNullOrWhiteSpace(loginUser.Contraseña))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Ingrese una contraseña", "Ok");
+
+                }
+                docente = await service.Login(loginUser);
+                if (docente != null)
+                {
+                    GruposDelDocente = await service.GetGrupos(docente.Id);
+                    mainView = new MainView() { BindingContext = this };
+
+                    Application.Current.MainPage = mainView;
+
+
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Usuario o contraseña incorrectos", "Ok");
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "No hay internet", "Ok");
 
             }
 
 
-       
+
+
+
 
 
         }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.LoginView"
               xmlns:vm="clr-namespace:AppDocenteAsignatura.ViewModels"
-             Title="LoginView"  Shell.NavBarIsVisible="False" NavigationPage.HasNavigationBar="False" BackgroundColor="Black">
+             Title="LoginView" BackgroundColor="#181823"  Shell.NavBarIsVisible="False" NavigationPage.HasNavigationBar="False" >
     <ContentPage.BindingContext>
         <vm:DocenteAsignaturaViewModel></vm:DocenteAsignaturaViewModel>
     </ContentPage.BindingContext>
@@ -12,7 +12,7 @@
             <RowDefinition Height="0.80*"></RowDefinition>
             <RowDefinition Height="0.20*"></RowDefinition>
         </Grid.RowDefinitions>
-    <FlexLayout  Grid.Row="0"     Direction="Column" Margin="20">
+    <FlexLayout  VerticalOptions="Center" Grid.Row="0"     Direction="Column" Margin="20">
         <Label HorizontalOptions="Center">Inicio de sesion</Label>
         <Label>Correo:</Label>
         <Entry Text="{Binding loginUser.Usuario1}"   ></Entry>
@@ -20,6 +20,6 @@
             <Entry Text="{Binding loginUser.Contraseña}" ></Entry>
 
         </FlexLayout  >
-        <Button Command="{Binding LoginCommand}" Grid.Row="1" TextColor="White" BorderColor="White" BackgroundColor="Transparent"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>
+        <Button BackgroundColor="#537FE7" Command="{Binding LoginCommand}" Grid.Row="1" TextColor="White" BorderColor="White"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>
     </Grid>
 </ContentPage>

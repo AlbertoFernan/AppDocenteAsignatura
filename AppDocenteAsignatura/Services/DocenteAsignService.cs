@@ -29,12 +29,10 @@ namespace AppDocenteAsignatura.Services
             docente = JsonConvert.DeserializeObject<Docente>(json2);
 
 
-            //if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
-            //{
-            //    var errores = await response.Content.ReadAsStringAsync();
-            //    LanzarErrorJson(errores);
-            //    return false;
-            //}
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
+            {
+                return null;
+            }
             return docente;
         }
 
