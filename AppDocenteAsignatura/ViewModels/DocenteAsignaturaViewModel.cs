@@ -74,10 +74,18 @@ namespace AppDocenteAsignatura.ViewModels
 
         private async void EnviarAsync()
         {
-            await service.SubirCalif(nuevacalif);
-            EvaluacionesAlumno = await service.VerCalifs(calif);
-            popup.Close();
-            Actualizar(nameof(EvaluacionesAlumno));
+            if (nuevacalif.Calificacion1>10&& nuevacalif.Calificacion1 < 5)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Ingrese una calificaci[on valida", "Ok");
+            }
+            else
+            {
+                await service.SubirCalif(nuevacalif);
+                EvaluacionesAlumno = await service.VerCalifs(calif);
+                popup.Close();
+                Actualizar(nameof(EvaluacionesAlumno));
+            }
+           
 
         }
 
