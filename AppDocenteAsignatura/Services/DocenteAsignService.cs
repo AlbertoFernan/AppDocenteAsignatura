@@ -1,4 +1,5 @@
 ﻿using AppDocenteAsignatura.Models;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,30 @@ namespace AppDocenteAsignatura.Services
         {
             BaseAddress = new Uri("https://docenteprimaria.sistemas19.com/")
         };
+
+        public async Task<Docente> Login(LoginUser login)
+        {
+            //Validar
+           Docente docente = null;
+
+            var json = JsonConvert.SerializeObject(login);
+            var response = await cliente.PostAsync("api/Docente/usuario", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+
+            var json2 = await response.Content.ReadAsStringAsync();
+            docente = JsonConvert.DeserializeObject<Docente>(json2);
+
+
+            //if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
+            //{
+            //    var errores = await response.Content.ReadAsStringAsync();
+            //    LanzarErrorJson(errores);
+            //    return false;
+            //}
+            return docente;
+        }
+
+
 
         public async Task<List<Grupos>> GetGrupos(int id)
         {
@@ -57,6 +82,28 @@ namespace AppDocenteAsignatura.Services
             {
                 return new List<Alumnos>();
             }
+        }
+
+        public async Task<List<Calificacion>> VerCalifs(VerCalificacion calif)
+        {
+            //Validar
+            List<Calificacion> calificaciones = null;
+
+            var json = JsonConvert.SerializeObject(calif);
+            var response = await cliente.PostAsync("api/Docente/calificaciones", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+
+            var json2 = await response.Content.ReadAsStringAsync();
+             calificaciones = JsonConvert.DeserializeObject<List<Calificacion>>(json2);
+        
+
+            //if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
+            //{
+            //    var errores = await response.Content.ReadAsStringAsync();
+            //    LanzarErrorJson(errores);
+            //    return false;
+            //}
+            return calificaciones;
         }
 
 

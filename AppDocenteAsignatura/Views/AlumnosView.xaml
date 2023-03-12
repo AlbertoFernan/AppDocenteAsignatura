@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.AlumnosView"
-             Title="Alumnos">
+             Title="Alumnos" NavigationPage.HasBackButton="True" x:Name="listalum" NavigationPage.HasNavigationBar="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
@@ -36,7 +36,7 @@
 
                                 <Frame  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer ></TapGestureRecognizer>
+                                        <TapGestureRecognizer    Command="{Binding Source={x:Reference listalum}, Path=BindingContext.VerCalificacionesCommand}" CommandParameter="{Binding Id}"  ></TapGestureRecognizer>
                                     </Frame.GestureRecognizers>
                                     <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
                                         <VerticalStackLayout  >

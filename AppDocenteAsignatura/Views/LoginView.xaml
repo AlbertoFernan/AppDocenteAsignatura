@@ -15,9 +15,9 @@
     <FlexLayout  Grid.Row="0"     Direction="Column" Margin="20">
         <Label HorizontalOptions="Center">Inicio de sesion</Label>
         <Label>Correo:</Label>
-        <Entry   ></Entry>
+        <Entry Text="{Binding loginUser.Usuario1}"   ></Entry>
         <Label>Contraseña:</Label>
-        <Entry></Entry>
+            <Entry Text="{Binding loginUser.Contraseña}" ></Entry>
 
         </FlexLayout  >
         <Button Command="{Binding LoginCommand}" Grid.Row="1" TextColor="White" BorderColor="White" BackgroundColor="Transparent"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>

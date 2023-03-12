@@ -6,4 +6,9 @@ public partial class GruposView : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+
+    }
 }

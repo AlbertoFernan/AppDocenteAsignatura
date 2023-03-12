@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.GruposView"
-             Title="Grupos" Shell.BackgroundColor="Black"   BackgroundColor="#0b1d21" >
+             Title="Grupos" Shell.BackgroundColor="Black" x:Name="list"   BackgroundColor="#0b1d21" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
@@ -16,7 +16,7 @@
             HorizontalOptions="Center" />
 
         </Frame>
-        <ScrollView Grid.Row="1"   VerticalOptions="FillAndExpand">
+        <ScrollView Grid.Row="1"    VerticalOptions="FillAndExpand">
             <VerticalStackLayout Margin="10" Grid.Row="0"   >
       
       
@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
+            <CollectionView Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
                         
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -36,7 +36,7 @@
 
                                 <Frame  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer  ></TapGestureRecognizer>
+                                        <TapGestureRecognizer    Command="{Binding Source={x:Reference list}, Path=BindingContext.VerAlumnosCommand}" CommandParameter="{Binding Id}"  ></TapGestureRecognizer>
                                     </Frame.GestureRecognizers>
                             <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
                                 <VerticalStackLayout  >

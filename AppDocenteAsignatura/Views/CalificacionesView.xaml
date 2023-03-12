@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDocenteAsignatura.Views.CalificacionesView"
+             Title="CalificacionesView" BackgroundColor="#0b1d21">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="0.90*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame BorderColor="Transparent"  CornerRadius="0" Padding="5" VerticalOptions="Center" BackgroundColor="#cf6123"  Grid.Row="0">
+            <VerticalStackLayout  >
+                <Label  FontSize="Header" TextColor="White"  VerticalTextAlignment="Center"   
+            Text="Periodo: 2023"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+                <Label FontSize="Header" TextColor="White"  VerticalTextAlignment="Center"   
+            Text="Asignatura: Ingles"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            </VerticalStackLayout>
+          
+
+        </Frame>
+        <ScrollView Grid.Row="1"    VerticalOptions="FillAndExpand">
+            <VerticalStackLayout Margin="10" Grid.Row="0"   >
+
+
+                <Grid  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.10*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.80*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.10*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding CalificacionesAlumno}">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+
+                                <Frame HorizontalOptions="Center"  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
+                           
+                                    <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
+                                        <VerticalStackLayout  >
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label TextColor="White"  >Unidad:</Label>
+                                                <Label TextColor="White"     VerticalOptions="Center" Text="{Binding Unidad}"></Label>
+                                            </StackLayout>
+                                            <StackLayout  Orientation="Horizontal">
+                                                <Label TextColor="White"    >Calificación:</Label>
+                                                <Label TextColor="White"   VerticalOptions="Center"  Text="{Binding Calificacion1}"></Label>
+                                            </StackLayout>
+
+                                        </VerticalStackLayout>
+
+                                        <Image Source="grupoimg.png" HeightRequest="40"></Image>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+        <Grid  Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.65*"></ColumnDefinition>
+                <ColumnDefinition Width="0.35*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        
+        <Border BackgroundColor="Transparent" Margin="15" Grid.Column="0" Padding="0" StrokeThickness="0" HorizontalOptions="Center" WidthRequest="150" >
+                <Frame BorderColor="Transparent"  BackgroundColor="#cf6123" Padding="0" >
+                    <Label FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" Text="Regresar"></Label>
+            </Frame>
+        </Border>
+
+            <Border  Grid.Column="1" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="Start" WidthRequest="80" HeightRequest="80" >
+          
+            <Frame  Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  BackgroundColor="Yellow"  >
+                <Label TextColor="Black" HorizontalOptions="Center" FontSize="Large"  VerticalOptions="Center" Text="+"></Label>
+            </Frame>
+        </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
