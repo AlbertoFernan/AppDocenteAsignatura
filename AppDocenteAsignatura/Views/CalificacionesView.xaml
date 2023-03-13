@@ -17,7 +17,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
                 <Label FontSize="Header" TextColor="White"  VerticalTextAlignment="Center"   
-            Text="Asignatura: Ingles"
+            Text="{Binding docente.NombreAsignatura}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
           

@@ -2,32 +2,61 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.PerfilView"
-             Title="Perfil del docente">
-    <Frame Margin="20" CornerRadius="20" BackgroundColor="#39579E">
-    <VerticalStackLayout>
-        <Image Source="user.png"></Image>
-        <Label FontSize="Large"
+             Title="Perfil del docente" BackgroundColor="#181823">
+    <Frame VerticalOptions="Start" Margin="20" CornerRadius="20" BackgroundColor="Black"  BorderColor="#39579E">
+    <VerticalStackLayout >
+        <Image Source="iconuser.png" HeightRequest="200"></Image>
+            <Label TextColor="#537FE7"  FontSize="Medium"
+            Text="Nombre:"
+           
+            HorizontalOptions="Center" />
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Label 
             Text="{Binding docente.Nombre}"
            
             HorizontalOptions="Center" />
-            <Label FontSize="Large"
+                <Label Text=" "></Label>
+                <Label 
             Text="{Binding docente.ApellidoPaterno}"
            
             HorizontalOptions="Center" />
-            <Label FontSize="Large"
+                <Label Text=" "></Label>
+                <Label 
             Text="{Binding docente.ApellidoMaterno}"
            
             HorizontalOptions="Center" />
-            <Label  FontSize="Medium"
+            </StackLayout>
+            <Label TextColor="#537FE7"   FontSize="Medium"
+            Text="Correo:"
+           
+            HorizontalOptions="Center" />
+            <Label  
             Text="{Binding docente.Correo}"
            
             HorizontalOptions="Center" />
-            <Label FontSize="Large"
+            <Label TextColor="#537FE7" FontSize="Medium" 
+            Text="Teléfono: "
+           
+            HorizontalOptions="Center" />
+            <Label 
             Text="{Binding docente.Telefono}"
            
             HorizontalOptions="Center" />
-            <Label FontSize="Large"
+            <Label TextColor="#537FE7"  FontSize="Medium" 
+            Text="Edad: "
+           
+            HorizontalOptions="Center" />
+            <Label 
             Text="{Binding docente.Edad}"
+           
+            HorizontalOptions="Center" />
+
+            <Label TextColor="#cf6123"  FontSize="Medium" 
+            Text="Asignatura: "
+         
+            HorizontalOptions="Center" />
+            <Label 
+            Text="{Binding docente.NombreAsignatura}"
            
             HorizontalOptions="Center" />
         </VerticalStackLayout>

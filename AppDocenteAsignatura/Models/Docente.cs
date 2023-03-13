@@ -27,5 +27,6 @@ namespace AppDocenteAsignatura.Models
         public int IdUsuario { get; set; }
         public short Periodo { get; set; }
         public int IdAsigantura { get; set; }
+        public string NombreAsignatura { get; set; } = null!;
     }
 }
