@@ -24,6 +24,8 @@ namespace AppDocenteAsignatura.ViewModels
         public List<Grupos> GruposDelDocente { get; set; }
 
         public Calificacion nuevacalif  { get; set; }
+        public string Error { get; set; }
+        public Asignatura materia { get; set; }
         public VerCalificacion calif { get; set; }
         public List<Alumnos> AlumnosDelGrupo { get; set; }
         public List<int> Unidades { get; set; }
@@ -74,9 +76,11 @@ namespace AppDocenteAsignatura.ViewModels
 
         private async void EnviarAsync()
         {
-            if (nuevacalif.Calificacion1>10&& nuevacalif.Calificacion1 < 5)
+            if (nuevacalif.Calificacion1>10|| nuevacalif.Calificacion1 < 5)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Ingrese una calificaci[on valida", "Ok");
+                Error= "Ingrese una calificación valida";
+                Actualizar(nameof(Error));
+
             }
             else
             {
@@ -140,19 +144,28 @@ namespace AppDocenteAsignatura.ViewModels
         {
             NetworkAccess accessType = Connectivity.Current.NetworkAccess;
 
+            try { 
             if (accessType == NetworkAccess.Internet)
             {
                 if(string.IsNullOrWhiteSpace(loginUser.Usuario1))
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Ingrese un usuario", "Ok");
+                        return;
 
                 }
-                if (string.IsNullOrWhiteSpace(loginUser.Contraseña))
+               else if (string.IsNullOrWhiteSpace(loginUser.Contraseña))
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Ingrese una contraseña", "Ok");
+                        return;
 
-                }
+                    }
+             
+
+           
+               
                 docente = await service.Login(loginUser);
+               
+              
                 if (docente != null)
                 {
                     GruposDelDocente = await service.GetGrupos(docente.Id);
@@ -173,9 +186,11 @@ namespace AppDocenteAsignatura.ViewModels
 
             }
 
-
-
-
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
+            }
 
 
 

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.AlumnosView"
-             Title="Alumnos" NavigationPage.HasBackButton="True" x:Name="listalum" NavigationPage.HasNavigationBar="True">
+             Title="Alumnos" NavigationPage.HasBackButton="True" BackgroundColor="#181823" x:Name="listalum" NavigationPage.HasNavigationBar="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
@@ -22,36 +22,37 @@
 
                 <Grid  >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.10*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.80*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.10*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.90*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.05*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
 
-                    <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding AlumnosDelGrupo}">
+                    <CollectionView    Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Center"   ItemsSource="{Binding AlumnosDelGrupo}">
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
 
-                                <Frame  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
+                                <Frame  BackgroundColor="#537FE7" Padding="2" Margin="5" CornerRadius="15" >
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer    Command="{Binding Source={x:Reference listalum}, Path=BindingContext.VerCalificacionesCommand}" CommandParameter="{Binding Id}"  ></TapGestureRecognizer>
                                     </Frame.GestureRecognizers>
-                                    <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
+                                    <StackLayout Padding="5" Spacing="10"   HorizontalOptions="Start"   Orientation="Horizontal">
+
+                                        <Image Source="student.png" HeightRequest="40"></Image>
                                         <VerticalStackLayout  >
                                             <StackLayout Orientation="Horizontal">
-                                                <Label TextColor="White"  >Nombre: </Label>
+                                                <Label TextColor="White"  Text="Nombre: " ></Label>
                                                 <Label TextColor="White"     VerticalOptions="Center" Text="{Binding Nombre}"></Label>
                                             </StackLayout>
                                             <StackLayout  Orientation="Horizontal">
-                                                <Label TextColor="White"    >Matricula: </Label>
+                                                <Label TextColor="White"  Text="Matricula: "  > </Label>
                                                 <Label TextColor="White"   VerticalOptions="Center"  Text="{Binding Matricula}"></Label>
                                             </StackLayout>
 
                                         </VerticalStackLayout>
 
-                                        <Image Source="grupoimg.png" HeightRequest="40"></Image>
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>

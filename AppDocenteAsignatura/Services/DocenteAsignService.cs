@@ -27,12 +27,14 @@ namespace AppDocenteAsignatura.Services
 
             var json2 = await response.Content.ReadAsStringAsync();
             docente = JsonConvert.DeserializeObject<Docente>(json2);
-
+             
+            
 
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
             {
                 return null;
             }
+
             return docente;
         }
 

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.CalificacionesView"
-             Title="CalificacionesView" BackgroundColor="#0b1d21">
+             Title="Calificaciones" BackgroundColor="#181823">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -35,28 +35,29 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <CollectionView   Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding EvaluacionesAlumno}">
+                    <CollectionView   Margin="10,0,10,10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Center"   ItemsSource="{Binding EvaluacionesAlumno}">
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
 
-                                <Frame HorizontalOptions="Center"  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
+                                <Frame HorizontalOptions="Center"  BackgroundColor="#537FE7" Padding="0" Margin="5" CornerRadius="15" >
                            
-                                    <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
+                                    <StackLayout Padding="5" Spacing="10" Margin="10,0,0,0"   HorizontalOptions="Start"   Orientation="Horizontal">
+                                        <Image  Source="note3.png" HeightRequest="40"></Image>
                                         <VerticalStackLayout  >
                                             <StackLayout Orientation="Horizontal">
-                                                <Label TextColor="White"  >Unidad:</Label>
+                                                <Label TextColor="White" Text="Unidad: "  ></Label>
                                                 <Label TextColor="White"     VerticalOptions="Center" Text="{Binding Unidad}"></Label>
                                             </StackLayout>
                                             <StackLayout  Orientation="Horizontal">
-                                                <Label TextColor="White"    >Calificación:</Label>
+                                                <Label TextColor="White" Text="Calificación: "    ></Label>
                                                 <Label TextColor="White"   VerticalOptions="Center"  Text="{Binding Calificacion1}"></Label>
                                             </StackLayout>
 
                                         </VerticalStackLayout>
 
-                                        <Image Source="grupoimg.png" HeightRequest="40"></Image>
+                                        
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>
@@ -68,27 +69,19 @@
 
             </VerticalStackLayout>
         </ScrollView>
-        <Grid  Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.65*"></ColumnDefinition>
-                <ColumnDefinition Width="0.35*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+      
         
-        <Border BackgroundColor="Transparent" Margin="15" Grid.Column="0" Padding="0" StrokeThickness="0" HorizontalOptions="Center" WidthRequest="150" >
-                <Frame BorderColor="Transparent"  BackgroundColor="#cf6123" Padding="0" >
-                    <Label FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" Text="Regresar"></Label>
-            </Frame>
-            </Border> 
+        
 
-            <Border  Grid.Column="1" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="Start" WidthRequest="80" HeightRequest="80" >
-          
-            <Frame  Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  BackgroundColor="Yellow"  >
+        <Border Margin="0,0,40,40" Grid.Row="2" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="End" WidthRequest="80" HeightRequest="80" >
+
+            <Frame   Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  BackgroundColor="#68B984"  >
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AgregarCalificacionCommand}" ></TapGestureRecognizer>
                     </Frame.GestureRecognizers>
-                <Label TextColor="Black" HorizontalOptions="Center" FontSize="Large"  VerticalOptions="Center" Text="+"></Label>
+                <Label Padding="0" Margin="0" TextColor="White" HorizontalOptions="Center" FontSize="30"  VerticalOptions="Center"  Text="+"></Label>
             </Frame>
         </Border>
         </Grid>
-    </Grid>
+    
 </ContentPage>

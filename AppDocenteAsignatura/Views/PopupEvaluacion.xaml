@@ -13,6 +13,7 @@
         <Label Text="Ingrese una calificacion"/>
         <Entry  Text="{Binding nuevacalif.Calificacion1 }" ></Entry>
             <Button Command="{Binding EnviarCalificacionCommand}" Text="Agregar"></Button>
-    </VerticalStackLayout>
+            <Label Text="{Binding Error}"/>
+        </VerticalStackLayout>
     </Frame>
 </mtc:Popup>

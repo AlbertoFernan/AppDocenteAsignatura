@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.GruposView"
-             Title="Grupos" Shell.BackgroundColor="Black" x:Name="list"   BackgroundColor="#0b1d21" >
+             Title="Grupos" Shell.BackgroundColor="Black" x:Name="list"   BackgroundColor="#181823"  >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
@@ -34,12 +34,14 @@
                     <DataTemplate>
 
 
-                                <Frame  BackgroundColor="#078a85" Padding="0" Margin="5" CornerRadius="15" >
+                                <Frame  BackgroundColor="#537FE7" Padding="0" Margin="5" CornerRadius="15" >
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer    Command="{Binding Source={x:Reference list}, Path=BindingContext.VerAlumnosCommand}" CommandParameter="{Binding Id}"  ></TapGestureRecognizer>
                                     </Frame.GestureRecognizers>
-                            <StackLayout Padding="5" Spacing="10"   HorizontalOptions="CenterAndExpand"   Orientation="Horizontal">
-                                <VerticalStackLayout  >
+                            <StackLayout Padding="5" Spacing="10"   HorizontalOptions="Start"   Orientation="Horizontal">
+
+                                        <Image Source="grupoimg.png" HeightRequest="40"></Image>
+                                        <VerticalStackLayout  >
                                     <StackLayout Orientation="Horizontal">
                                         <Label TextColor="White"  >Grado:</Label>
                                                 <Label TextColor="White"     VerticalOptions="Center" Text="{Binding Grado}"></Label>
@@ -51,7 +53,6 @@
 
                                 </VerticalStackLayout>
 
-                                <Image Source="grupoimg.png" HeightRequest="40"></Image>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
