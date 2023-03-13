@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.AlumnosView"
-             Title="Alumnos" NavigationPage.HasBackButton="True" BackgroundColor="#181823" x:Name="listalum" NavigationPage.HasNavigationBar="True">
-    <Grid>
+             Title="Alumnos" NavigationPage.HasBackButton="True" BackgroundColor="Black" x:Name="listalum" NavigationPage.HasNavigationBar="True">
+    <Grid BackgroundColor="#181823">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="0.90*"></RowDefinition>
@@ -36,7 +36,7 @@
 
                                 <Frame  BackgroundColor="#537FE7" Padding="2" Margin="5" CornerRadius="15" >
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer    Command="{Binding Source={x:Reference listalum}, Path=BindingContext.VerCalificacionesCommand}" CommandParameter="{Binding Id}"  ></TapGestureRecognizer>
+                                        <TapGestureRecognizer    Command="{Binding Source={x:Reference listalum}, Path=BindingContext.VerCalificacionesCommand}" CommandParameter="{Binding .}"  ></TapGestureRecognizer>
                                     </Frame.GestureRecognizers>
                                     <StackLayout Padding="5" Spacing="10"   HorizontalOptions="Start"   Orientation="Horizontal">
 

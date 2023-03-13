@@ -49,7 +49,7 @@ namespace AppDocenteAsignatura.ViewModels
         public LoginUser loginUser { get; set; }
 
         public Docente docente { get; set; }
-
+        public Alumnos alumnno { get; set; }
         public DocenteAsignaturaViewModel()
         {
             Unidades=new List<int>();
@@ -61,7 +61,7 @@ namespace AppDocenteAsignatura.ViewModels
             LoginCommand = new Command(IniciarSesionAsync);
             VerAlumnosCommand = new Command<int>(VerAlumnos);
 
-            VerCalificacionesCommand = new Command<int>(VerCalificacioness);
+            VerCalificacionesCommand = new Command<Alumnos>(VerCalificacioness);
 
             AgregarCalificacionCommand = new Command(AggCalifAsync);
             EnviarCalificacionCommand = new Command(EnviarAsync);
@@ -114,13 +114,16 @@ namespace AppDocenteAsignatura.ViewModels
             await Application.Current.MainPage.Navigation.PopAsync(); 
         }
 
-        private async void VerCalificacioness(int id)
+        private async void VerCalificacioness(Alumnos alumn)
         {
+            alumnno=new Alumnos();
             calif = new VerCalificacion();
-            calif.IdAlumno = id;
+            calif.IdAlumno = alumn.Id;
             calif.IdDocente = docente.Id;
             calif.IdPeriodo =(int)docente.Periodo;
             calif.IdAsignatura = docente.IdAsigantura;
+            alumnno.Nombre = alumn.Nombre;
+            Actualizar(nameof(alumnno));
 
             EvaluacionesAlumno = await service.VerCalifs(calif);
 
@@ -175,10 +178,10 @@ namespace AppDocenteAsignatura.ViewModels
 
 
                 }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "Usuario o contraseña incorrectos", "Ok");
-                }
+                //else
+                //{
+                //    await Application.Current.MainPage.DisplayAlert("Error", "Usuario o contraseña incorrectos", "Ok");
+                //}
             }
             else
             {

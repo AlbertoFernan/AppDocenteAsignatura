@@ -19,6 +19,10 @@ namespace AppDocenteAsignatura.Services
         public async Task<Docente> Login(LoginUser login)
         {
             //Validar
+            try
+            {
+
+          
            Docente docente = null;
 
             var json = JsonConvert.SerializeObject(login);
@@ -30,12 +34,19 @@ namespace AppDocenteAsignatura.Services
              
             
 
-            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) //BadRequest
-            {
-                return null;
-            }
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest|| response.StatusCode == System.Net.HttpStatusCode.NotFound) //BadRequest
+                {
+                   
+                   return null;
+                  
+                }
 
             return docente;
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException(ex.Message);
+            }
         }
 
 

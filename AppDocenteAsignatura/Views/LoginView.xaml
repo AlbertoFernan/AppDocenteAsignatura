@@ -9,17 +9,26 @@
     </ContentPage.BindingContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.10*"></RowDefinition>
             <RowDefinition Height="0.80*"></RowDefinition>
             <RowDefinition Height="0.20*"></RowDefinition>
         </Grid.RowDefinitions>
-    <FlexLayout  VerticalOptions="Center" Grid.Row="0"     Direction="Column" Margin="20">
-        <Label HorizontalOptions="Center">Inicio de sesion</Label>
-        <Label>Correo:</Label>
+        <Frame Margin="10"  CornerRadius="25" Grid.Row="1"   BackgroundColor="#29375A">
+
+            <ScrollView>
+    <StackLayout  VerticalOptions="Start"     Orientation="Vertical" Margin="20">
+                    <Image HeightRequest="150" Margin="0" Source="docen3.png"></Image>
+                    <Label TextColor="#8A89CD" Margin="0,0,0,30" HorizontalOptions="Center">DOCENTELIA.</Label>
+                    <Label Margin="0,0,0,10" FontSize="Large" HorizontalOptions="Center">Inicio de sesión:</Label>
+             
+               <Label>Correo:</Label>
         <Entry Text="{Binding loginUser.Usuario1}"   ></Entry>
         <Label>Contraseña:</Label>
             <Entry Text="{Binding loginUser.Contraseña}" ></Entry>
+                    <Button  Margin="0,20,0,0" BackgroundColor="#537FE7" Command="{Binding LoginCommand}" TextColor="White" BorderColor="White"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>
 
-        </FlexLayout  >
-        <Button BackgroundColor="#537FE7" Command="{Binding LoginCommand}" Grid.Row="1" TextColor="White" BorderColor="White"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>
+            </StackLayout >
+            </ScrollView>
+        </Frame>
     </Grid>
 </ContentPage>
