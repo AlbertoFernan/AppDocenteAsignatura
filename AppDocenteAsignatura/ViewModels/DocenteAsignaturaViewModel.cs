@@ -178,11 +178,11 @@ namespace AppDocenteAsignatura.ViewModels
 
 
                 }
-                //else
-                //{
-                //    await Application.Current.MainPage.DisplayAlert("Error", "Usuario o contraseña incorrectos", "Ok");
-                //}
-            }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Usuario o contraseña incorrectos", "Ok");
+                    }
+                }
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "No hay internet", "Ok");

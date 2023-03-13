@@ -47,7 +47,7 @@
                             <DataTemplate>
 
 
-                                <Frame HorizontalOptions="Center"  BackgroundColor="#537FE7" Padding="0" Margin="5" CornerRadius="15" >
+                                <Frame HorizontalOptions="Fill"  BackgroundColor="#537FE7" Padding="0" Margin="5" CornerRadius="15" >
                            
                                     <StackLayout Padding="5" Spacing="10" Margin="10,0,0,0"   HorizontalOptions="Start"   Orientation="Horizontal">
                                         <Image  Source="note3.png" HeightRequest="40"></Image>
@@ -79,9 +79,9 @@
         
         
 
-        <Border Margin="0,0,40,40" Grid.Row="3" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="End" WidthRequest="80" HeightRequest="80" >
+        <Border Margin="0,0,40,40" Grid.Row="3" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="End" WidthRequest="100" HeightRequest="80" >
 
-            <Frame   Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  BackgroundColor="#23CF62"  >
+            <Frame   Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  WidthRequest="80" HeightRequest="80"  BackgroundColor="#23CF62"  >
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AgregarCalificacionCommand}" ></TapGestureRecognizer>
                     </Frame.GestureRecognizers>
