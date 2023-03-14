@@ -8,15 +8,19 @@
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Label Padding="5" HorizontalTextAlignment="Center" BackgroundColor="#078a85" Text="Menu"></Label>
+            <Frame Padding="0" BackgroundColor="#078a85" CornerRadius="0">
+                
+           
+            <Label Margin="5" Padding="5" HorizontalTextAlignment="Center"  Text="Menu"></Label>
+            </Frame>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
-        <FlyoutItem Title="Grupos" >
+    <FlyoutItem  Title="Grupos" Icon="gruposwhite.png"  FlyoutIcon="gruposwhite.png" >
         
             <ShellContent ContentTemplate="{DataTemplate views:GruposView}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Perfil"
+    <FlyoutItem Title="Perfil" Icon="iconuser.png" FlyoutIcon="iconuser.png"
             >
             <ShellContent ContentTemplate="{DataTemplate views:PerfilView}" />
         </FlyoutItem>

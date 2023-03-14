@@ -4,15 +4,15 @@
              x:Class="AppDocenteAsignatura.Views.PopupEvaluacion"
              xmlns:mtc="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui" Color="Transparent"
     >
-    <Frame BackgroundColor="Black" Padding="0" CornerRadius="20">
+    <Frame BackgroundColor="Black" BorderColor="#39579E" Padding="0" CornerRadius="20">
         
    
     <VerticalStackLayout BackgroundColor="Transparent"  Padding="20" >
-        <Label Text="Seleccione una unidad"/>
+        <Label Text="Seleccione una unidad."/>
         <Picker  ItemsSource="{Binding Unidades}" SelectedItem="{Binding nuevacalif.Unidad}" ></Picker>
-        <Label Text="Ingrese una calificacion"/>
+        <Label Text="Ingrese una calificación."/>
         <Entry  Text="{Binding nuevacalif.Calificacion1 }" ></Entry>
-            <Button Command="{Binding EnviarCalificacionCommand}" Text="Agregar"></Button>
+            <Button Command="{Binding EnviarCalificacionCommand}" Margin="5" BackgroundColor="#537FE7" TextColor="White" Text="Agregar"></Button>
             <Label Text="{Binding Error}"/>
         </VerticalStackLayout>
     </Frame>

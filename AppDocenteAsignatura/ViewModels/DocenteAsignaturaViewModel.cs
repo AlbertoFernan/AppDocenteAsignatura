@@ -47,7 +47,7 @@ namespace AppDocenteAsignatura.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public LoginUser loginUser { get; set; }
-
+        public Grupos grupovm { get; set; }
         public Docente docente { get; set; }
         public Alumnos alumnno { get; set; }
         public DocenteAsignaturaViewModel()
@@ -59,7 +59,7 @@ namespace AppDocenteAsignatura.ViewModels
 
             Unidades.Add(3);
             LoginCommand = new Command(IniciarSesionAsync);
-            VerAlumnosCommand = new Command<int>(VerAlumnos);
+            VerAlumnosCommand = new Command<Grupos>(VerAlumnos);
 
             VerCalificacionesCommand = new Command<Alumnos>(VerCalificacioness);
 
@@ -133,10 +133,14 @@ namespace AppDocenteAsignatura.ViewModels
             //await Application.Current.MainPage.Navigation.PushAsync(calificacionesView);
         }
 
-        private async void VerAlumnos(int id)
+        private async void VerAlumnos(Grupos grupo)
         {
-
-            AlumnosDelGrupo = await service.GetAlumnos(id); 
+            grupovm=new Grupos();
+            grupovm.Seccion = grupo.Seccion;
+            grupovm.Grado = grupo.Grado;
+            grupovm.Id=grupo.Id;
+            Actualizar(nameof(grupovm));
+            AlumnosDelGrupo = await service.GetAlumnos(grupo.Id); 
 
             alumnosView = new AlumnosView() { BindingContext = this };
             await Shell.Current.GoToAsync("AlumnosView");

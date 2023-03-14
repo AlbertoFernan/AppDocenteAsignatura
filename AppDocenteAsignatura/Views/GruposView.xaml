@@ -11,13 +11,13 @@
         <Frame BorderColor="Transparent" CornerRadius="0" Padding="5" BackgroundColor="#cf6123"  Grid.Row="0">
      
         <Label FontSize="Header" TextColor="White"  VerticalTextAlignment="Center"   
-            Text="Seleccione un grupo para ver sus alumnos"
+            Text="Seleccione un grupo para ver sus alumnos."
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
         </Frame>
         <ScrollView Grid.Row="1"    VerticalOptions="FillAndExpand">
-            <VerticalStackLayout Margin="10" Grid.Row="0"   >
+            <VerticalStackLayout Margin="10,5,10,10" Grid.Row="0"   >
       
       
         <Grid  >
@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <CollectionView Margin="10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
+            <CollectionView Margin="10,0,10,10" VerticalOptions="Fill" VerticalScrollBarVisibility="Always"  Grid.Column="1"  HorizontalOptions="Fill"   ItemsSource="{Binding GruposDelDocente}">
                         
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -36,7 +36,7 @@
 
                                 <Frame  BackgroundColor="#537FE7" Padding="0" Margin="5" CornerRadius="15" >
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer    Command="{Binding Source={x:Reference list}, Path=BindingContext.VerAlumnosCommand}" CommandParameter="{Binding Id}"  ></TapGestureRecognizer>
+                                        <TapGestureRecognizer    Command="{Binding Source={x:Reference list}, Path=BindingContext.VerAlumnosCommand}" CommandParameter="{Binding .}"  ></TapGestureRecognizer>
                                     </Frame.GestureRecognizers>
                             <StackLayout Padding="5" Spacing="10"   HorizontalOptions="Start"   Orientation="Horizontal">
 

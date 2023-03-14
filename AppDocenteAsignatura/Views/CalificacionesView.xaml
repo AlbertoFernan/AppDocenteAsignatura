@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDocenteAsignatura.Views.CalificacionesView"
-             Title="Calificaciones" BackgroundColor="Black">
+             Title="Calificaciones" BackgroundColor="Black" Shell.BackgroundColor="Black">
     <Grid  BackgroundColor="#181823">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -79,7 +79,7 @@
         
         
 
-        <Border Margin="0,0,40,40" Grid.Row="3" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="End" WidthRequest="100" HeightRequest="80" >
+        <Border Margin="0,0,40,40" Grid.Row="3" BackgroundColor="Transparent" Padding="5"  StrokeThickness="0"  HorizontalOptions="End" WidthRequest="90" HeightRequest="80" >
 
             <Frame   Padding="0" Margin="0" HorizontalOptions="End" CornerRadius="60"  WidthRequest="80" HeightRequest="80"  BackgroundColor="#23CF62"  >
                     <Frame.GestureRecognizers>
