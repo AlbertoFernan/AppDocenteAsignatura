@@ -21,10 +21,10 @@
                     <Label TextColor="#8A89CD" Margin="0,0,0,30" HorizontalOptions="Center">DOCENTELIA.</Label>
                     <Label Margin="0,0,0,10" FontSize="Large" HorizontalOptions="Center">Inicio de sesión:</Label>
              
-               <Label>Correo:</Label>
+               <Label>Usuario:</Label>
         <Entry Text="{Binding loginUser.Usuario1}"   ></Entry>
         <Label>Contraseña:</Label>
-            <Entry Text="{Binding loginUser.Contraseña}" ></Entry>
+            <Entry IsPassword="True" Text="{Binding loginUser.Contraseña}" ></Entry>
                     <Button  Margin="0,20,0,0" BackgroundColor="#537FE7" Command="{Binding LoginCommand}" TextColor="White" BorderColor="White"   Text="Ingresar"    HorizontalOptions="Center" VerticalOptions="Center"></Button>
 
             </StackLayout >
